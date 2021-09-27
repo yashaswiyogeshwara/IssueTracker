@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Api.GraphQL
 {
-    public class TaskItem { 
+    public class Task { 
+        public long Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime CreatedOn { get; set; }
@@ -14,14 +15,15 @@ namespace Api.GraphQL
     }
     public class Query
     {
-        public IEnumerable<TaskItem> GetTasks() {
-            return new List<TaskItem>() {
-                new TaskItem() { Title = "Setting Up Api", CreatedOn = DateTime.UtcNow }
+        public Task[] GetTasks() {
+            return new Task[] {
+                new Task() { Title = "Setting Up Api", CreatedOn = DateTime.UtcNow, Id = 1 },
+                new Task() { Title = "Setting Up Client", CreatedOn = DateTime.UtcNow, Id = 2 }
             };
         }
 
-        public TaskItem GetTaskById() {
-            return new TaskItem() { Title = "Checking GraphQL API", CreatedOn = DateTime.UtcNow };
+        public Task GetTaskById() {
+            return new Task() { Title = "Checking GraphQL API", CreatedOn = DateTime.UtcNow, Id = 1 };
         }
     }
 }

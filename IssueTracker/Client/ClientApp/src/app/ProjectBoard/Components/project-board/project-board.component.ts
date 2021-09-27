@@ -1,6 +1,8 @@
 
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
+import { ProjectBoardService } from '../../Services/project-board.service';
+import { GetTaskResponse, projectTask } from '../../Services/responses/get-task-response';
 
 @Component({
   selector: 'app-project-board',
@@ -8,28 +10,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./project-board.component.scss']
 })
 export class ProjectBoardComponent implements OnInit {
-
-  constructor() { }
+  public taskList: projectTask[] = {} as projectTask[];
+  constructor(public projectBoardService: ProjectBoardService) { }
 
   ngOnInit(): void {
+  this.projectBoardService.GetTasks().valueChanges.
+  subscribe((data)=>{
+    this.taskList = data.data.tasks.map(x => x);
+    });
   }
   
-  movies = [
-    'Episode I - The Phantom Menace',
-    'Episode II - Attack of the Clones',
-    'Episode III - Revenge of the Sith',
-    'Episode IV - A New Hope',
-    'Episode V - The Empire Strikes Back',
-    'Episode VI - Return of the Jedi',
-    'Episode VII - The Force Awakens',
-    'Episode VIII - The Last Jedi',
-    'Episode IX – The Rise of Skywalker'
-  ];
-
   drop(event: CdkDragDrop<string[]>) {
-    debugger;
-    console.log(event);
-    moveItemInArray(this.movies, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.taskList, event.previousIndex, event.currentIndex);
   }
 
 }

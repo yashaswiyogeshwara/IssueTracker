@@ -26,6 +26,7 @@ namespace Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services
                 .AddGraphQLServer()
                 .AddQueryType<Query>();
@@ -37,10 +38,13 @@ namespace Api
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseHttpsRedirection();
 
-            app.UseRouting();
+            app.UseRouting().UseCors(x => x
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .SetIsOriginAllowed(origin => true)
+                    .AllowCredentials());
 
             app.UseEndpoints(endpoints =>
             {
