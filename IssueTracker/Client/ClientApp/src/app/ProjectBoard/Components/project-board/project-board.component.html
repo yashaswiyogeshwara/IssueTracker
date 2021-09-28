@@ -1,0 +1,10 @@
+<div class="container">
+    <div class="add-icon-container">
+        <mat-icon class="add-icon">add_circle</mat-icon>
+    </div>
+    <div class="task-item-list">
+        <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let task of taskList" cdkDrag>{{task.title}}</div>
+        </div>
+    </div>
+</div>
