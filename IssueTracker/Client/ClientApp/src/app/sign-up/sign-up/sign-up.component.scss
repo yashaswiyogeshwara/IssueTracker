@@ -1,0 +1,25 @@
+.container{
+    display: grid;
+    grid-template-columns: 30% auto 30%;
+    grid-template-rows: 30% 500px auto;
+}
+
+.sign-up-container{
+    grid-column: 2/3;
+    grid-row: 2/3;
+    width: 100%;
+    height: 70%;
+    border: solid blue 2px;
+    padding: 50px;
+    color: blue;
+}
+
+mat-form-field{
+    width: 70%;
+    margin-top: 10px ;
+}
+
+.submit-button{   
+    width: 82px;
+    margin-top: 50px;
+}
