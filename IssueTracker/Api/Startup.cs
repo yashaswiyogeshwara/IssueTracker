@@ -27,6 +27,7 @@ namespace Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
+            services.AddControllers();
             services
                 .AddGraphQLServer()
                 .AddQueryType<Query>();
@@ -49,6 +50,7 @@ namespace Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGraphQL();
+                endpoints.MapControllers();
             });
         }
     }
