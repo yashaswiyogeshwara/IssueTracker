@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -9,10 +10,8 @@ export class SignUpService {
 
   constructor(public http : HttpClient) {}
 
- public signUp(form : any){
+ public signUp(form : any): Observable<any>{
       let url = environment.apiUrl+"/api/SignUp"
-      this.http.post(url,form).subscribe((data) =>{
-        console.log(data);
-      })
+      return this.http.post(url,form)
   }
 }
