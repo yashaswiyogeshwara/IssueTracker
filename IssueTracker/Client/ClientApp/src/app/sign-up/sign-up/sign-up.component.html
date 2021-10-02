@@ -1,5 +1,5 @@
 <div class="container">
-        <mat-card class="sign-up-container">
+        <mat-card class="sign-up-container" *ngIf = "!successfullySignedUp">
             <mat-card-title-group>
               <mat-card-title>Sign Up</mat-card-title>
             </mat-card-title-group>
@@ -28,4 +28,7 @@
             </form>      
             </mat-card-content>
           </mat-card>
+          <div *ngIf="successfullySignedUp" class="sign-up-container">
+            <h1>  You are Successfully Registered. Please login !!! </h1>
+          </div>
 </div>

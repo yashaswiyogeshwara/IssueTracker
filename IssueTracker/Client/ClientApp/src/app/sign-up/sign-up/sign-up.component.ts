@@ -8,7 +8,7 @@ import { SignUpService } from '../services/sign-up.service';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
-
+  public successfullySignedUp = false;
   public signUpForm : FormGroup;
   constructor(public fb : FormBuilder, public service : SignUpService) {
     this.signUpForm = this.fb.group({
@@ -24,7 +24,9 @@ export class SignUpComponent implements OnInit {
 
   submit(){
     console.log(this.signUpForm.value)
-    this.service.signUp(this.signUpForm.value);
+    this.service.signUp(this.signUpForm.value).subscribe((data)=>{
+      this.successfullySignedUp = true;
+    })
   }
 
   get name(){
