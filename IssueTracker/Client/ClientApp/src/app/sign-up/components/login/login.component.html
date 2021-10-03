@@ -1,0 +1,24 @@
+
+    <mat-card class="sign-in-container">
+        <mat-card-title-group>
+          <mat-card-title>Sign In</mat-card-title>
+        </mat-card-title-group>
+        <mat-card-content>
+            <form class="example-form" [formGroup]="signInForm" (submit)="submit()">
+                <mat-form-field>
+                    <input matInput placeholder="Email" type="email" formControlName="email">
+                    <mat-error *ngIf="email?.invalid && email?.touched">
+                        Enter a valid email
+                    </mat-error>
+                </mat-form-field>
+            
+                <mat-form-field>
+                    <input matInput placeholder="Password" type="password" formControlName="password">
+                </mat-form-field>
+            <div>
+                <button mat-raised-button [disabled]="signInForm.invalid"  class="submit-button" color="primary" type="submit">Submit</button>
+                <p class="sign-up-link">Sign Up</p>
+            </div>
+        </form>      
+        </mat-card-content>
+      </mat-card>    

@@ -7,11 +7,16 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class SignUpService {
+  
 
   constructor(public http : HttpClient) {}
 
  public signUp(form : any): Observable<any>{
-      let url = environment.apiUrl+"/api/SignUp"
+      let url = environment.apiUrl+"/api/SignUp";
       return this.http.post(url,form)
+  }
+  public SignIn(form : any) {
+   let url = environment.apiUrl+"api/SignIn"; 
+   return this.http.post(url,form);
   }
 }
