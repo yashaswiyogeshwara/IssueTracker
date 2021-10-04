@@ -4,6 +4,9 @@ import { ProjectBoardRoutingModule } from './project-board-routing.module';
 import { ProjectBoardComponent } from './Components/project-board/project-board.component';
 import {MatIconModule} from '@angular/material/icon';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {MatDialogModule} from '@angular/material/dialog';
+import { SharedModule } from '../shared/shared.module';
+
 
 @NgModule({
   declarations: [
@@ -13,7 +16,9 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     CommonModule,  
     ProjectBoardRoutingModule,
     DragDropModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
+    SharedModule
   ]
 })
 export class ProjectBoardModule { }

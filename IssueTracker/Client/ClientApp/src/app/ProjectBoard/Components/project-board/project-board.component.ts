@@ -1,6 +1,8 @@
 
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AddTaskDialogComponent } from 'src/app/shared/add-task-dialog/add-task-dialog.component';
 import { ProjectBoardService } from '../../Services/project-board.service';
 import { GetTaskResponse, projectTask } from '../../Services/responses/get-task-response';
 
@@ -11,7 +13,7 @@ import { GetTaskResponse, projectTask } from '../../Services/responses/get-task-
 })
 export class ProjectBoardComponent implements OnInit {
   public taskList: projectTask[] = {} as projectTask[];
-  constructor(public projectBoardService: ProjectBoardService) { }
+  constructor(public projectBoardService: ProjectBoardService,public dialog: MatDialog) { }
 
   ngOnInit(): void {
   this.projectBoardService.GetTasks().valueChanges.
@@ -22,6 +24,13 @@ export class ProjectBoardComponent implements OnInit {
   
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.taskList, event.previousIndex, event.currentIndex);
+  }
+
+  AddTask(){
+    this.dialog.open(AddTaskDialogComponent,{
+      width:'70%',
+      height : '70%'
+    });
   }
 
 }
