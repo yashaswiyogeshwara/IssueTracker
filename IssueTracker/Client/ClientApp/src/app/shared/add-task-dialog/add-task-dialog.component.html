@@ -1,26 +1,36 @@
-<form [formGroup]="addTaskForm">
+<form [formGroup]="addTaskForm" (submit)="SaveTask()">
+    
     <mat-form-field>
-        <input matInput formControllName="title" placeholder="Add Task" type="text">
+        <input matInput placeholder="Add Task" type="text" formControlName="title">
         <mat-error *ngIf="title?.invalid">
             Please enter a title.
         </mat-error> 
     </mat-form-field>
-
-    <mat-form-field >
+     <mat-form-field class="assignee">
         <mat-label>Team Member</mat-label>
-        <mat-select formControllName="user" required>
-          <mat-option>--</mat-option>
-          <mat-option *ngFor="let user of users">
+        <mat-select formControlName="userId" required>
+          <mat-option *ngFor="let user of users" [value]="user.id">
             {{user.name}}
           </mat-option>
         </mat-select>
         <mat-error *ngIf="user?.invalid">Please choose an user</mat-error>
     </mat-form-field>
 
+    <mat-form-field class="team" required>
+        <mat-label>Team</mat-label>
+        <mat-select formControlName="team" required>
+          <mat-option *ngFor="let team of teams" [value]="team.id">
+            {{team.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="team?.invalid">Please choose an team</mat-error>
+    </mat-form-field>
+
     <mat-form-field>
-        <input matInput formControllName="description" placeholder="Description" type="text">
+        <textarea matInput formControlName="description" placeholder="Description"></textarea>
         <mat-error *ngIf="description?.invalid">
             Please enter a title.
         </mat-error> 
-    </mat-form-field>
+    </mat-form-field> 
+<button mat-raised-button color="primary" type="submit" [disabled]="addTaskForm.invalid">Save</button>
 </form>

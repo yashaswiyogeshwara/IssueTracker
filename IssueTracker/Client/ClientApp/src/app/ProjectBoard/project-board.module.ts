@@ -7,6 +7,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatDialogModule} from '@angular/material/dialog';
 import { SharedModule } from '../shared/shared.module';
 
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SharedModule } from '../shared/shared.module';
     DragDropModule,
     MatIconModule,
     MatDialogModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ]
 })
 export class ProjectBoardModule { }
