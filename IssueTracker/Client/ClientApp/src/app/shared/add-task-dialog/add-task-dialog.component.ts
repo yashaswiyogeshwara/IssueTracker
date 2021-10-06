@@ -24,9 +24,14 @@ export class AddTaskDialogComponent implements OnInit {
   constructor(public fb: FormBuilder, public dialogRef : MatDialogRef<AddTaskDialogComponent>) {
     this.addTaskForm = fb.group({
       "title":['',[Validators.required]],
-       "description":['',[Validators.required]],
+       "description":[''],
        "userId":['',[Validators.required]],
-       "team":['',[Validators.required]]
+       "teamId":[''],
+       "startDate":[''],
+       "endDate":[''],
+       "estimate":[''],
+       "timeSpent":[''],
+       "parentTaskId":['']
     });
     
    }
@@ -49,6 +54,13 @@ export class AddTaskDialogComponent implements OnInit {
 
   get team(){
     return this.addTaskForm.get('team');
+  }
+
+  get startDate(){
+    return this.addTaskForm.get('startDate');
+  }
+  get endDate(){
+    return this.addTaskForm.get('endDate');
   }
 
   SaveTask(){

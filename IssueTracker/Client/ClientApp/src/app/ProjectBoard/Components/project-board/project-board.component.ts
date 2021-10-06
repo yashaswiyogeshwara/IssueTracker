@@ -1,10 +1,14 @@
 export class Task{
   public title : string = '';
   public userId : number = -1;
-  public team : string = '';
+  public teamId : string = '';
   public description: string = '';
-
+  public estimate= null;
+  public startDate = null;
+  public endDate = null;
+  public timeSpent = null;
 }
+
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -43,9 +47,13 @@ export class ProjectBoardComponent implements OnInit {
           map((data) => {
             let task = new Task();
             task.title = data.title;
-            task.team = data.team;
+            task.teamId = data.teamId;
             task.userId = data.userId;
             task.description = data.description;
+            task.endDate = data.endDate;
+            task.startDate = data.startDate;
+            task.estimate = data.estimate;
+            task.timeSpent = data.timeSpent;
             return task;
           })
           )
