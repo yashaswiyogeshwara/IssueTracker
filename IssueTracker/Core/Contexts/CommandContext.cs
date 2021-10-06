@@ -18,10 +18,7 @@ namespace Core.Contexts
         public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder) {
-            builder.Entity<User>().HasKey((x) => x.Id);
-            builder.Entity<User>().Property((x) => x.Email).Metadata.IsNullable = false;
-            builder.Entity<User>().Property((x) => x.Name).Metadata.IsNullable = false;
-            builder.Entity<User>().Property((x) => x.Password).Metadata.IsNullable = false;
+            builder.ApplyConfigurationsFromAssembly(typeof(CommandContext).Assembly);
         }
 
     }
