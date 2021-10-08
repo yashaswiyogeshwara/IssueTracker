@@ -1,4 +1,6 @@
-﻿using Core.Models;
+﻿using Core.Configurations;
+using Core.Models;
+using Core.Models.Views;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,7 +18,11 @@ namespace Core.Contexts
         }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<TaskItem> TaskItems { get; set; }
+        public DbSet<TaskItemView> TaskItems { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.ApplyConfigurationsFromAssembly(typeof(QueryContext).Assembly);
+        }
     }
 }

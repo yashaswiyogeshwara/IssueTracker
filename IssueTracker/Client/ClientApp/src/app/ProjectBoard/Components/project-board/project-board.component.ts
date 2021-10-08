@@ -69,6 +69,8 @@ export class ProjectBoardComponent implements OnInit {
     const task = new projectTask();
     task.id = data.id;
     task.title = data.title;
+    task.statusId = data.statusId;
+    task.status = data.status;
     this.taskList.push(task);
   }
 

@@ -52,7 +52,7 @@
   .container{
     display: grid;
     grid-template-columns: 500px auto 500px;
-    grid-template-rows: 30px 50px auto 30px;;
+    grid-template-rows: 30px 50px auto 30px;
   }
 
   .task-item-list{
@@ -76,4 +76,8 @@
   }
   .strike-out{
     text-decoration: line-through;
+  }
+  .task-item-status{
+    display: inline-block !important;
+    margin-left: 20px;
   }
