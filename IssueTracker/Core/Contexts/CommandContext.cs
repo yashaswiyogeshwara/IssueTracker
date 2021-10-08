@@ -17,7 +17,8 @@ namespace Core.Contexts
 
         public DbSet<User> Users { get; set; }
         public DbSet<TaskItem> TaskItems { get; set; }
-
+        public DbSet<Status> Status { get; set; }
+    
         protected override void OnModelCreating(ModelBuilder builder) {
             builder.ApplyConfigurationsFromAssembly(typeof(CommandContext).Assembly);
         }
