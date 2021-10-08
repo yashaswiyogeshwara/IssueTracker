@@ -4,7 +4,14 @@
     </div>
     <div class="task-item-list">
         <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-            <div class="example-box" *ngFor="let task of taskList" cdkDrag>{{task.title}}</div>
+            <div class="example-box"  *ngFor="let task of taskList" cdkDrag>
+                <div class="task-item-title">
+                    Ticket {{task.id}}
+                </div>
+                <div [ngClass]="{'strike-out' : task.statusId > 2}">
+                    {{task.title}}
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -9,7 +9,7 @@ const GET_Project_Tasks = gql`
     tasks {
       id,
       title,
-      description
+      statusId
     }
   }
 `;

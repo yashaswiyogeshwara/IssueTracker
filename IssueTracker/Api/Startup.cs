@@ -32,6 +32,7 @@ namespace Api
             string connectionString = Configuration.GetConnectionString("ApplicationDb");
             services.AddCors();
             services.AddDbContext<CommandContext>(options => options.UseSqlServer(connectionString));
+            services.AddPooledDbContextFactory<QueryContext>(options => options.UseSqlServer(connectionString));
             services.AddControllers();
             services.AddScoped<IUserService, UserService>();
             services

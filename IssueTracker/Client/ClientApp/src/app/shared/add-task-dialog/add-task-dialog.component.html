@@ -1,59 +1,69 @@
 <form [formGroup]="addTaskForm" (submit)="SaveTask()">
-    <mat-form-field>
-        <input matInput placeholder="Add Task" type="text" formControlName="title">
-        <mat-error *ngIf="title?.invalid">
-            Please enter a title.
-        </mat-error> 
-    </mat-form-field>
-     <mat-form-field class="assignee">
-        <mat-label>Team Member</mat-label>
-        <mat-select formControlName="userId" required>
-          <mat-option *ngFor="let user of users" [value]="user.id">
-            {{user.name}}
-          </mat-option>
-        </mat-select>
-        <mat-error *ngIf="user?.invalid">Please choose an user</mat-error>
-    </mat-form-field>
+	<mat-form-field>
+		<input matInput placeholder="Add Task" type="text" formControlName="title">
+		<mat-error *ngIf="title?.invalid">
+			Please enter a title.
+		</mat-error>
+	</mat-form-field>
+	<div>
+		<mat-form-field required>
+			<mat-label>Status</mat-label>
+			<mat-select formControlName="status" required>
+				<mat-option *ngFor="let status of statuses" [value]="status.id">
+					{{status.name}}
+				</mat-option>
+			</mat-select>
+			<mat-error *ngIf="status?.invalid">Please set a status to the task</mat-error>
+		</mat-form-field>
 
-    <mat-form-field class="team" required>
-        <mat-label>Team</mat-label>
-        <mat-select formControlName="teamId" required>
-          <mat-option *ngFor="let team of teams" [value]="team.id">
-            {{team.name}}
-          </mat-option>
-        </mat-select>
-        <mat-error *ngIf="team?.invalid">Please choose an team</mat-error>
-    </mat-form-field>
+		<mat-form-field>
+			<mat-label>Team Member</mat-label>
+			<mat-select formControlName="userId" required>
+				<mat-option *ngFor="let user of users" [value]="user.id">
+					{{user.name}}
+				</mat-option>
+			</mat-select>
+			<mat-error *ngIf="user?.invalid">Please choose an user</mat-error>
+		</mat-form-field>
+	
+		<mat-form-field>
+			<mat-label>Team</mat-label>
+			<mat-select formControlName="teamId" required>
+				<mat-option *ngFor="let team of teams" [value]="team.id">
+					{{team.name}}
+				</mat-option>
+			</mat-select>
+			<mat-error *ngIf="team?.invalid">Please choose an team</mat-error>
+		</mat-form-field>
+	</div>
+	<div>
+		<mat-form-field>
+			<mat-label>Enter Start and End Dates for the Task</mat-label>
+			<mat-date-range-input [rangePicker]="picker">
+				<input matStartDate formControlName="startDate" placeholder="Start date">
+				<input matEndDate formControlName="endDate" placeholder="End date">
+			</mat-date-range-input>
+			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+			<mat-date-range-picker #picker></mat-date-range-picker>
 
-    <mat-form-field class="date-range">
-      <mat-label>Enter Start and End Dates for the Task</mat-label>
-      <mat-date-range-input [rangePicker]="picker">
-        <input matStartDate formControlName="startDate" placeholder="Start date">
-        <input matEndDate formControlName="endDate" placeholder="End date">
-      </mat-date-range-input>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-date-range-picker #picker></mat-date-range-picker>
-    
-      <mat-error *ngIf="addTaskForm.controls.startDate.hasError('matStartDateInvalid')">Invalid start date</mat-error>
-      <mat-error *ngIf="addTaskForm.controls.endDate.hasError('matEndDateInvalid')">Invalid end date</mat-error>
-    </mat-form-field>
+			<mat-error *ngIf="addTaskForm.controls.startDate.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+			<mat-error *ngIf="addTaskForm.controls.endDate.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+		</mat-form-field>
 
-  
-  <div>
-   <mat-form-field>
-      <input matInput placeholder="Estimated hours" type="number" formControlName="estimate">
-   </mat-form-field>  
-   <mat-form-field>
-    <input matInput placeholder="Time Spent(hours)" type="number" formControlName="timeSpent">
-  </mat-form-field>
-  </div>
-  
+		<mat-form-field>
+			<input matInput placeholder="Estimated hours" type="number" formControlName="estimate">
+		</mat-form-field>
+		<mat-form-field>
+			<input matInput placeholder="Time Spent(hours)" type="number" formControlName="timeSpent">
+		</mat-form-field>
+	</div>
 
-  <mat-form-field>
-      <textarea matInput formControlName="description" placeholder="Description"></textarea>
-      <mat-error *ngIf="description?.invalid">
-          Please enter a title.
-      </mat-error> 
-  </mat-form-field> 
-<button mat-raised-button color="primary" type="submit" [disabled]="addTaskForm.invalid">Save</button>
+
+	<mat-form-field>
+		<textarea matInput formControlName="description" placeholder="Description"></textarea>
+		<mat-error *ngIf="description?.invalid">
+			Please enter a title.
+		</mat-error>
+	</mat-form-field>
+	<button mat-raised-button color="primary" type="submit" [disabled]="addTaskForm.invalid">Save</button>
 </form>

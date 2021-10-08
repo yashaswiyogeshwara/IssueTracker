@@ -31,7 +31,8 @@ namespace Api.Controllers
                 TimeSpent = taskItem.TimeSpent,
                 Estimate = taskItem.Estimate,
                 StartDate = taskItem.StartDate,
-                TeamId = taskItem.TeamId
+                TeamId = taskItem.TeamId,
+                StatusId = taskItem.StatusId
             });
             Context.SaveChanges();    
         }

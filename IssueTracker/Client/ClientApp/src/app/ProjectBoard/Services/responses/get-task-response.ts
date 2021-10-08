@@ -5,5 +5,5 @@ export class GetTaskResponse  {
 export class projectTask {
     public id = null;
     public title = null;
-    public description = null;
+    public statusId: number = 0; 
 }

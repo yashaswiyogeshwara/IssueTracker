@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Core.Models
 {
+    [Table("TaskItem")]
     public class TaskItem
     {
         [Key]
@@ -20,5 +22,6 @@ namespace Core.Models
         public DateTime? EndDate { get; set; }
         public int? TimeSpent { get; set; }
         public long ParentTaskId { get; set; }
+        public int StatusId { get; set; }
     }
 }
