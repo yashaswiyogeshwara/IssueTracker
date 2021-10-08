@@ -8,19 +8,15 @@ using System.Threading.Tasks;
 
 namespace Core.Contexts
 {
-    public class CommandContext : DbContext
+    public class QueryContext : DbContext
     {
-        public CommandContext(DbContextOptions<CommandContext> options) : base(options)
+        public QueryContext(DbContextOptions<QueryContext> options) : base(options)
         {
 
         }
 
         public DbSet<User> Users { get; set; }
         public DbSet<TaskItem> TaskItems { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder builder) {
-            builder.ApplyConfigurationsFromAssembly(typeof(CommandContext).Assembly);
-        }
 
     }
 }

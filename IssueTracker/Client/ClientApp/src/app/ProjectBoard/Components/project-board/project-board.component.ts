@@ -7,6 +7,7 @@ export class Task{
   public startDate = null;
   public endDate = null;
   public timeSpent = null;
+  public statusId:number = 0;
 }
 
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
@@ -54,13 +55,21 @@ export class ProjectBoardComponent implements OnInit {
             task.startDate = data.startDate;
             task.estimate = data.estimate;
             task.timeSpent = data.timeSpent;
+            task.statusId = data.statusId;
             return task;
           })
           )
         .subscribe((data) =>{
-      console.log(data);
+      this.AddToTaskList(data);    
       this.projectBoardService.SaveTask(data);
     });
+  }
+
+  AddToTaskList(data: any){
+    const task = new projectTask();
+    task.id = data.id;
+    task.title = data.title;
+    this.taskList.push(task);
   }
 
 }

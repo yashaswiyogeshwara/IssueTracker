@@ -18,5 +18,6 @@ namespace Api.Models
         public DateTime? EndDate { get; set; }
         public int? TimeSpent { get; set; }
         public long ParentTaskId { get; set; }
+        public int StatusId { get; set; }
     }
 }
