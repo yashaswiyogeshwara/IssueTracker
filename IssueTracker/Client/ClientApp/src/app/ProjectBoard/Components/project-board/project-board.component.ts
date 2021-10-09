@@ -16,7 +16,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AddTaskDialogComponent } from 'src/app/shared/add-task-dialog/add-task-dialog.component';
 import { ProjectBoardService } from '../../Services/project-board.service';
 import { GetTaskResponse, projectTask } from '../../Services/responses/get-task-response';
-import {map} from 'rxjs/operators'
+import {map,mergeMap} from 'rxjs/operators'
 
 @Component({
   selector: 'app-project-board',
@@ -57,20 +57,21 @@ export class ProjectBoardComponent implements OnInit {
             task.timeSpent = data.timeSpent;
             task.statusId = data.statusId;
             return task;
-          })
+          }),
+          mergeMap((data) => this.projectBoardService.SaveTask(data).pipe(map((x) => data)))
           )
         .subscribe((data) =>{
       this.AddToTaskList(data);    
-      this.projectBoardService.SaveTask(data);
     });
   }
 
   AddToTaskList(data: any){
+    console.log(data);
     const task = new projectTask();
     task.id = data.id;
     task.title = data.title;
     task.statusId = data.statusId;
-    task.status = data.status;
+    task.status = data.status; //TODO : Status is not available on client side should fetch this on login. Maintain a state store as well. 
     this.taskList.push(task);
   }
 
