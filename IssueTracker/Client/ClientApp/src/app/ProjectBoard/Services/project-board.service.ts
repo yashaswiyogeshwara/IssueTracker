@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Apollo, gql, QueryRef } from 'apollo-angular';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { GetTaskResponse } from './responses/get-task-response';
 
@@ -28,9 +29,9 @@ export class ProjectBoardService {
     });
   }
 
-  public SaveTask(form : any):any{
+  public SaveTask(form : any):Observable<any>{
     const url = environment.apiUrl + "/api/TaskItem"
-    this.http.post(url,form).subscribe();
+    return this.http.post(url,form);
   }
 
 }

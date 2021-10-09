@@ -8,7 +8,7 @@
 	<div>
 		<mat-form-field required>
 			<mat-label>Status</mat-label>
-			<mat-select formControlName="status" required>
+			<mat-select formControlName="statusId" required>
 				<mat-option *ngFor="let status of statuses" [value]="status.id">
 					{{status.name}}
 				</mat-option>

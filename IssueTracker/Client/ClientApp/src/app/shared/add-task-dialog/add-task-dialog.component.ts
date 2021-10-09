@@ -39,13 +39,12 @@ export class AddTaskDialogComponent implements OnInit {
        "estimate":[''],
        "timeSpent":[''],
        "parentTaskId":[''],
-       "status":[1,[Validators.required]]
+       "statusId":[1,[Validators.required]]
     });
     
    }
 
   ngOnInit(): void {
-    
   }
 
   get title(){
@@ -76,5 +75,6 @@ export class AddTaskDialogComponent implements OnInit {
 
   SaveTask(){
     this.dialogRef.close(this.addTaskForm.value);
+    console.log(this.addTaskForm.value);
   }
 }
