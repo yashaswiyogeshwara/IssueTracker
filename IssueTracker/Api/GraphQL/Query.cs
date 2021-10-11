@@ -10,7 +10,7 @@ namespace Api.GraphQL
     {
         [UseDbContext(typeof(QueryContext))]
         public IQueryable<TaskItemView> GetTasks([ScopedService] QueryContext context) {
-            return context.TaskItems.OrderByDescending(x => x.DisplayOrder).ThenBy(x => x.Id);
+            return context.TaskItems.OrderBy(x => x.DisplayOrder).ThenBy(x => x.Id);
         }
     }
 }
