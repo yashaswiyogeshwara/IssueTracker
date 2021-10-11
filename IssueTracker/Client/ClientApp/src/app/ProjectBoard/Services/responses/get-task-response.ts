@@ -7,4 +7,6 @@ export class projectTask {
     public title = null;
     public statusId: number = 0; 
     public status: string = ''; 
+    public displayOrder : number = 0;
+    
 }

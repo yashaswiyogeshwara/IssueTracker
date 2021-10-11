@@ -23,5 +23,6 @@ namespace Core.Models
         public int? TimeSpent { get; set; }
         public long ParentTaskId { get; set; }
         public int StatusId { get; set; }
+        public int DisplayOrder { get; set; }
     }
 }

@@ -32,9 +32,18 @@ namespace Api.Controllers
                 Estimate = taskItem.Estimate,
                 StartDate = taskItem.StartDate,
                 TeamId = taskItem.TeamId,
-                StatusId = taskItem.StatusId
+                StatusId = taskItem.StatusId,
+                DisplayOrder = taskItem.DisplayOrder
             });
             Context.SaveChanges();    
+        }
+
+        [HttpPatch]
+        public void UpdateDisplayOrder([FromBody] UpdateDisplayOrderModel taskItem) {
+            Core.Models.TaskItem task = Context.TaskItems.Where(x => x.Id == taskItem.Id).FirstOrDefault();
+            task.DisplayOrder = taskItem.DisplayOrder;
+            Context.SaveChanges();
+
         }
     }
 }
