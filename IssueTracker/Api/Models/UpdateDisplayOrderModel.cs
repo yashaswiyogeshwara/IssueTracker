@@ -4,14 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Models.Views
+namespace Api.Models
 {
-    public class TaskItemView
+    public class UpdateDisplayOrderModel
     {
         public long Id { get; set; }
-        public string Title { get; set; }
-        public string Status { get; set; }
-        public int StatusId { get; set; }
         public int DisplayOrder { get; set; }
     }
 }

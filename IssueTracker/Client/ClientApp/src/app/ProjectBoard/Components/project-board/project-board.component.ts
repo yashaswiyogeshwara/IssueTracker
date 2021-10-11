@@ -8,6 +8,7 @@ export class Task{
   public endDate = null;
   public timeSpent = null;
   public statusId:number = 0;
+  public displayOrder: number = 0; 
 }
 
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
@@ -17,6 +18,7 @@ import { AddTaskDialogComponent } from 'src/app/shared/add-task-dialog/add-task-
 import { ProjectBoardService } from '../../Services/project-board.service';
 import { GetTaskResponse, projectTask } from '../../Services/responses/get-task-response';
 import {map,mergeMap} from 'rxjs/operators'
+import { noop } from 'rxjs';
 
 @Component({
   selector: 'app-project-board',
@@ -33,8 +35,12 @@ export class ProjectBoardComponent implements OnInit {
     this.taskList = data.data.tasks.map(x => x);
     });
   }
-  
+
   drop(event: CdkDragDrop<string[]>) {
+    let task : projectTask=  new projectTask();
+    task.id = this.taskList[event.previousIndex].id;
+    task.displayOrder = event.currentIndex;
+    this.projectBoardService.UpdateTaskDisplayOrder(task).subscribe(() => noop());
     moveItemInArray(this.taskList, event.previousIndex, event.currentIndex);
   }
 
@@ -56,6 +62,7 @@ export class ProjectBoardComponent implements OnInit {
             task.estimate = data.estimate;
             task.timeSpent = data.timeSpent;
             task.statusId = data.statusId;
+            task.displayOrder = this.taskList.length;
             return task;
           }),
           mergeMap((data) => this.projectBoardService.SaveTask(data).pipe(map((x) => data)))
