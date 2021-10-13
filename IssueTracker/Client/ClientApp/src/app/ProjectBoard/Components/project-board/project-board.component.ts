@@ -16,7 +16,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AddTaskDialogComponent } from 'src/app/shared/add-task-dialog/add-task-dialog.component';
 import { ProjectBoardService } from '../../Services/project-board.service';
-import { GetTaskResponse, projectTask } from '../../Services/responses/get-task-response';
+import { projectTask } from '../../Services/responses/get-task-response';
 import {map,mergeMap} from 'rxjs/operators'
 import { noop } from 'rxjs';
 
@@ -37,11 +37,19 @@ export class ProjectBoardComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    let task : projectTask=  new projectTask();
-    task.id = this.taskList[event.previousIndex].id;
-    task.displayOrder = event.currentIndex;
-    this.projectBoardService.UpdateTaskDisplayOrder(task).subscribe(() => noop());
     moveItemInArray(this.taskList, event.previousIndex, event.currentIndex);
+    var updatedTaskList = this.getProjectTasksWithTheirDisplayOrder();
+    this.projectBoardService.UpdateTaskDisplayOrder(updatedTaskList).subscribe(() => noop());
+  }
+
+  private getProjectTasksWithTheirDisplayOrder(){
+    var updatedTaskList = this.taskList.map( (x,index) =>{
+      let task = new projectTask();
+      task.id = x.id;
+      task.displayOrder= index;
+      return task;
+    });
+    return updatedTaskList;
   }
 
   AddTask(){

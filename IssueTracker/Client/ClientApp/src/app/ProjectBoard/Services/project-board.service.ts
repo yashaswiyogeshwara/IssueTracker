@@ -35,7 +35,7 @@ export class ProjectBoardService {
     return this.http.post(url,form);
   }
 
-  public UpdateTaskDisplayOrder(form: projectTask){
+  public UpdateTaskDisplayOrder(form: projectTask[]){
     const url = environment.apiUrl + "/api/TaskItem"
     return this.http.patch(url,form);
   }
