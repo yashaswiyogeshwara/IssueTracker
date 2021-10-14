@@ -4,7 +4,7 @@
     </div>
     <div class="task-item-list">
         <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-            <div class="example-box"  *ngFor="let task of taskList" cdkDrag>
+            <div class="example-box"  *ngFor="let task of taskList" cdkDrag (dblclick)="EditTask(task.id)">
                 <div>
                     <Span class="task-item-title">Ticket {{task.id}}</Span>
                     <mat-chip-list class= "task-item-status" aria-label="Status">

@@ -22,6 +22,8 @@ namespace Api.Controllers
         [HttpPost]
         public void SaveTask([FromBody] TaskItem taskItem)
         {
+            if (taskItem.Id == 0)
+            {
                 Context.Add<Core.Models.TaskItem>(new Core.Models.TaskItem()
                 {
                     Title = taskItem.Title,
@@ -36,6 +38,22 @@ namespace Api.Controllers
                     StatusId = taskItem.StatusId,
                     DisplayOrder = taskItem.DisplayOrder
                 });
+            }
+            else {
+                Core.Models.TaskItem task = Context.TaskItems.Where(x => x.Id == taskItem.Id).First();
+                    task.Title = taskItem.Title;
+                    task.UserId = taskItem.UserId;
+                    task.Description = taskItem.Description;
+                    task.EndDate = taskItem.EndDate;
+                    task.ParentTaskId = taskItem.ParentTaskId;
+                    task.TimeSpent = taskItem.TimeSpent;
+                    task.Estimate = taskItem.Estimate;
+                    task.StartDate = taskItem.StartDate;
+                    task.TeamId = taskItem.TeamId;
+                    task.StatusId = taskItem.StatusId;
+                task.DisplayOrder = taskItem.DisplayOrder;
+            }  
+                
                 Context.SaveChanges();
                     
         }
