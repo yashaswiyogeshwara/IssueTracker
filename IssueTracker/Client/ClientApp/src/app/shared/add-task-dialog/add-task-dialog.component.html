@@ -1,5 +1,6 @@
 <form [formGroup]="addTaskForm" (submit)="SaveTask()">
 	<mat-form-field>
+		<Span class="task-item-title" formControlName="id">Ticket {{data.taskInfo.id}}</Span>
 		<input matInput placeholder="Add Task" type="text" formControlName="title">
 		<mat-error *ngIf="title?.invalid">
 			Please enter a title.

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Apollo, gql, QueryRef } from 'apollo-angular';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { GetTaskResponse, projectTask } from './responses/get-task-response';
+import { GetTaskResponse, ProjectTask } from './responses/get-task-response';
 
 const GET_Project_Tasks = gql`
   query GetProjectItems {
@@ -12,7 +12,14 @@ const GET_Project_Tasks = gql`
       title,
       statusId,
       status,
-      displayOrder
+      displayOrder,
+      userId,
+      teamId,
+      description,
+      estimate,
+      startDate,
+      endDate,
+      timeSpent
     }
   }
 `;
@@ -35,7 +42,7 @@ export class ProjectBoardService {
     return this.http.post(url,form);
   }
 
-  public UpdateTaskDisplayOrder(form: projectTask[]){
+  public UpdateTaskDisplayOrder(form: ProjectTask[]){
     const url = environment.apiUrl + "/api/TaskItem"
     return this.http.patch(url,form);
   }
