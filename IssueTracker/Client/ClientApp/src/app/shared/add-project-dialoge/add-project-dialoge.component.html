@@ -1,0 +1,46 @@
+<form [formGroup]="addProjectForm" (submit)="SaveProject()">
+    <mat-form-field>
+        <input matInput type="text" placeholder="Project Title" formControlName="title" >    
+        <mat-error *ngIf="title?.invalid">
+            Please enter a title.
+        </mat-error>        
+    </mat-form-field>
+    <div>
+    <mat-form-field class="team">
+        <mat-label>Team</mat-label>
+        <mat-select formControlName="teamId" required>
+            <mat-option *ngFor="let team of teams" [value]="team.id">
+                {{team.name}}
+            </mat-option>
+        </mat-select>
+        <mat-error *ngIf="team?.invalid">Please choose an team</mat-error>
+    </mat-form-field>
+    <mat-form-field class="start-end-date">
+        <mat-label>Enter Start and End Dates for the Task</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+            <input matStartDate formControlName="startDate" placeholder="Start date">
+            <input matEndDate formControlName="endDate" placeholder="End date">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+
+        <mat-error *ngIf="addProjectForm.controls.startDate.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+        <mat-error *ngIf="addProjectForm.controls.endDate.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="estimated">
+        <input matInput placeholder="Estimated hours" type="number" formControlName="estimate">
+    </mat-form-field>
+    <mat-form-field class="time-spent">
+        <input matInput placeholder="Time Spent(hours)" type="number" formControlName="timeSpent">
+    </mat-form-field> 
+</div>
+     <mat-form-field>
+		<textarea matInput formControlName="description" placeholder="Description"></textarea>
+		<mat-error *ngIf="description?.invalid">
+			Please enter a title.
+		</mat-error>
+	</mat-form-field>
+	<button mat-raised-button color="primary" type="submit" [disabled]="addProjectForm.invalid">Save</button>
+    
+</form>

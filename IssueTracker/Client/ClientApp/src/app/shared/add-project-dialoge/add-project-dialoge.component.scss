@@ -2,13 +2,20 @@ mat-form-field{
     display: block;
 }
 
-textarea{
-    height: 180px;
+.project-title{
+    color:blue;
 }
 
-.assignee{
+.time-spent{
     width: 25%;
     display: inline-block;
+    margin-left: 20px;
+}
+
+.start-end-date{
+    width: 25%;
+    display: inline-block;
+    margin-left: 20px;
 }
 
 .team{
@@ -17,19 +24,11 @@ textarea{
     margin-left: 20px;
 }
 
-.date-range{
+.estimated{
     width: 25%;
     display: inline-block;
     margin-left: 20px;
 }
-
-div mat-form-field{
-    width: 25%;
-    display: inline-block;
-    margin-right: 20px;
+textarea{
+    height: 180px;
 }
-.task-item-title{
-    color: blue;
-    font-weight: bold;
-  }
-  

@@ -29,7 +29,10 @@ export class AddTaskDialogComponent implements OnInit {
     {"id" : 3, "name":"Done"  },
     {"id" : 4, "name":"Accepted"  }
   ]; 
-  constructor(public fb: FormBuilder, public dialogRef : MatDialogRef<AddTaskDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: {taskInfo: ProjectTask}) {
+  constructor(public fb: FormBuilder,
+     public dialogRef : MatDialogRef<AddTaskDialogComponent>, 
+    @Inject(MAT_DIALOG_DATA) public data: {taskInfo: ProjectTask}
+    ) {
     this.addTaskForm = fb.group({
       "id":[data.taskInfo.id],
       "title":[data.taskInfo.title,[Validators.required]],
