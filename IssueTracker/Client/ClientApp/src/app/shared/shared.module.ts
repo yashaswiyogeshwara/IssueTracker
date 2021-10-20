@@ -8,6 +8,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker'
 import {MatNativeDateModule} from '@angular/material/core';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatIconModule} from '@angular/material/icon';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -21,10 +25,25 @@ import {MatNativeDateModule} from '@angular/material/core';
     ReactiveFormsModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    DragDropModule,
+    MatIconModule,
+    MatDialogModule,
+    MatChipsModule
   ],
   exports:[
-    AddTaskDialogComponent
+    AddTaskDialogComponent,
+    MatInputModule,
+    MatCardModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    DragDropModule,
+    MatIconModule,
+    MatDialogModule,
+    MatChipsModule
   ]
 })
 export class SharedModule { }
