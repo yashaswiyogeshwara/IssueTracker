@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { UserBoardRoutingModule } from './user-board-routing.module';
 import { UserBoardComponent } from './Components/user-board/user-board.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { UserBoardComponent } from './Components/user-board/user-board.component
   ],
   imports: [
     CommonModule,
-    UserBoardRoutingModule
+    UserBoardRoutingModule,
+    SharedModule
   ]
 })
 export class UserBoardModule { }

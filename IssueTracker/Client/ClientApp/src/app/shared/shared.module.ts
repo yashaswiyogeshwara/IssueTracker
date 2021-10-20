@@ -12,10 +12,13 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatIconModule} from '@angular/material/icon';
 import {MatChipsModule} from '@angular/material/chips';
+import { AddProjectDialogeComponent } from './add-project-dialoge/add-project-dialoge.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
-    AddTaskDialogComponent
+    AddTaskDialogComponent,
+    AddProjectDialogeComponent
   ],
   imports: [
     CommonModule,
@@ -29,9 +32,11 @@ import {MatChipsModule} from '@angular/material/chips';
     DragDropModule,
     MatIconModule,
     MatDialogModule,
-    MatChipsModule
+    MatChipsModule,
+    MatFormFieldModule 
   ],
   exports:[
+    AddProjectDialogeComponent,
     AddTaskDialogComponent,
     MatInputModule,
     MatCardModule,
@@ -43,7 +48,8 @@ import {MatChipsModule} from '@angular/material/chips';
     DragDropModule,
     MatIconModule,
     MatDialogModule,
-    MatChipsModule
+    MatChipsModule,
+    MatFormFieldModule 
   ]
 })
 export class SharedModule { }
