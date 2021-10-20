@@ -5,6 +5,10 @@ const routes: Routes =
 [
   {
     path:'',
+    loadChildren:() => import('./user-board/user-board.module').then(mod => mod.UserBoardModule)
+  },
+  {
+    path:'project',
     loadChildren:() => import('./ProjectBoard/project-board.module').then(mod => mod.ProjectBoardModule)
   },
   {
