@@ -80,6 +80,5 @@ export class AddTaskDialogComponent implements OnInit {
 
   SaveTask(){
     this.dialogRef.close(this.addTaskForm.value);
-    console.log(this.addTaskForm.value);
   }
 }

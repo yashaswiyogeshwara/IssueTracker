@@ -29,7 +29,6 @@ export class AddProjectDialogeComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.addProjectForm.valueChanges.subscribe(x => console.log(x));
   }
   
   get startDate(){
@@ -51,10 +50,8 @@ export class AddProjectDialogeComponent implements OnInit {
     return this.addProjectForm.get('team');
   }
 
-
-
   SaveProject(){
-    console.log(this.addProjectForm.value);
+    this.dialogRef.close(this.addProjectForm.value);
   }
 
 }
