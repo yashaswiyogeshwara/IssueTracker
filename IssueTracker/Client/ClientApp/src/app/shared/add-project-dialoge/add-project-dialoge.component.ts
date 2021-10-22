@@ -17,14 +17,14 @@ export class AddProjectDialogeComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: {projectInfo: Project}
     ) {
       this.addProjectForm = fb.group({
-        "id":[''],
+        "id":[],
         "title":['',[Validators.required]],
-        "description":[''],
-        "teamId":[''],
-        "startDate":[''],
-        "endDate":[''],
-        "estimate":[''],
-        "timeSpent":['']
+        "description":[],
+        "teamId":[],
+        "startDate":[],
+        "endDate":[],
+        "estimate":[],
+        "timeSpent":[]
       })
    }
 
