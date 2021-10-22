@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { noop } from 'rxjs';
+import { noop, pipe } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { AddProjectDialogeComponent } from 'src/app/shared/add-project-dialoge/add-project-dialoge.component';
 import { Project } from '../../Services/Responses/get-project';
 import { UserBoardService } from '../../Services/user-board.service';
@@ -26,7 +27,17 @@ export class UserBoardComponent implements OnInit {
       width:'70%',
       height : '70%',
     });
-    dialogRef.afterClosed().subscribe((data: Project)=>{
+    dialogRef.afterClosed().pipe(map((data) => {
+      var p = new Project();
+      p.description = data.description;
+      p.endDate = data.endDate;
+      p.estimate = data.estimate;
+      p.startDate = data.startDate;
+      p.teamId = data.teamId;
+      p.timeSpent = data.timeSpent;
+      p.title = data.title;
+      return p;
+    })).subscribe((data: Project)=>{
       this.SaveProject(data)
     });
   }

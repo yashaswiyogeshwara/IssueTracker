@@ -1,6 +1,7 @@
 ﻿using Api.Models;
 using Core.Contexts;
 using Microsoft.AspNetCore.Mvc;
+using CC = Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace Api.Controllers
         [HttpPost]
         public void SaveProject([FromBody] Project project)
         {
-            Context.Add<Project>(new Project()
+            Context.Add<CC.Project>(new CC.Project()
             {
                 Title = project.Title,
                 Description = project.Description,

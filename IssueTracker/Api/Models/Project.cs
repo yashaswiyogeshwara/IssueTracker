@@ -8,6 +8,7 @@ namespace Api.Models
 {
     public class Project
     {
+        public int? id { get; set; }
         public string Title { get; set; }
         public long? TeamId { get; set; }
         public DateTime? StartDate { get; set; }
