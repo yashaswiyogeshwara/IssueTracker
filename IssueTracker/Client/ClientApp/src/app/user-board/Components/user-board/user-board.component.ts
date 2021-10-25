@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { noop, pipe } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AddProjectDialogeComponent } from 'src/app/shared/add-project-dialoge/add-project-dialoge.component';
-import { Project } from '../../Services/Responses/get-project';
+import { GetProjectsResponse, Project } from '../../Services/Responses/get-project';
 import { UserBoardService } from '../../Services/user-board.service';
 
 @Component({
@@ -12,10 +12,14 @@ import { UserBoardService } from '../../Services/user-board.service';
   styleUrls: ['./user-board.component.scss']
 })
 export class UserBoardComponent implements OnInit {
-
-  constructor(public dialog: MatDialog,public userService: UserBoardService) { }
+  public projects: Project[] = {} as Project[];
+  constructor(public dialog: MatDialog, public userService: UserBoardService) {
+  }
 
   ngOnInit(): void {
+    this.userService.GetProjects().valueChanges.subscribe((data) => {
+      this.projects = data.data.projects;
+    });
   }
 
   AddProject(){

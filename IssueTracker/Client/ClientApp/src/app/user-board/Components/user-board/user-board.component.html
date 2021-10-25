@@ -1,1 +1,4 @@
 <button  mat-raised-button (click)="AddProject()">Add Project</button>
+<div *ngFor="let project of projects">
+  {{project.title}}
+</div>
