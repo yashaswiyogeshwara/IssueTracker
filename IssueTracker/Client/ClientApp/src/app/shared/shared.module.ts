@@ -14,6 +14,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatChipsModule} from '@angular/material/chips';
 import { AddProjectDialogeComponent } from './add-project-dialoge/add-project-dialoge.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatIconModule,
     MatDialogModule,
     MatChipsModule,
-    MatFormFieldModule 
+    MatFormFieldModule,
+    MatTableModule
   ],
   exports:[
     AddProjectDialogeComponent,
@@ -49,7 +51,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatIconModule,
     MatDialogModule,
     MatChipsModule,
-    MatFormFieldModule 
+    MatFormFieldModule,
+    MatTableModule
   ]
 })
 export class SharedModule { }
