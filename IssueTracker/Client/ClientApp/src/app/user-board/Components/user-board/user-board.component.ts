@@ -13,6 +13,7 @@ import { UserBoardService } from '../../Services/user-board.service';
 })
 export class UserBoardComponent implements OnInit {
   public projects: Project[] = {} as Project[];
+  displayedColumns: string[] = ['title'];
   constructor(public dialog: MatDialog, public userService: UserBoardService) {
   }
 
