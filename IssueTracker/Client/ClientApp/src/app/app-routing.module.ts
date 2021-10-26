@@ -8,7 +8,7 @@ const routes: Routes =
     loadChildren:() => import('./user-board/user-board.module').then(mod => mod.UserBoardModule)
   },
   {
-    path:'project',
+    path:'project/:id',
     loadChildren:() => import('./ProjectBoard/project-board.module').then(mod => mod.ProjectBoardModule)
   },
   {
