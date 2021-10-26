@@ -15,7 +15,7 @@ namespace Core.Models.Views
         public int DisplayOrder { get; set; }
         public long UserId { get; set; }
         public long? TeamId { get; set; }
-        public int Estimate { get; set; }
+        public int? Estimate { get; set; }
         public string Description { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; } 
