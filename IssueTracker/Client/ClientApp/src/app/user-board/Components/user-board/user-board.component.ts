@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { noop, pipe } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AddProjectDialogeComponent } from 'src/app/shared/add-project-dialoge/add-project-dialoge.component';
@@ -14,7 +15,9 @@ import { UserBoardService } from '../../Services/user-board.service';
 export class UserBoardComponent implements OnInit {
   public projects: Project[] = {} as Project[];
   displayedColumns: string[] = ['title'];
-  constructor(public dialog: MatDialog, public userService: UserBoardService) {
+  constructor(public dialog: MatDialog, public userService: UserBoardService,
+    public route : Router
+    ) {
   }
 
   ngOnInit(): void {
@@ -51,5 +54,7 @@ export class UserBoardComponent implements OnInit {
     console.log(data);
     this.userService.SaveProject(data).subscribe(_ => noop());
   }
-
+  NavigateToProject(row:Project){
+    this.route.navigate(["/project",row.id]);
+  }
 }
