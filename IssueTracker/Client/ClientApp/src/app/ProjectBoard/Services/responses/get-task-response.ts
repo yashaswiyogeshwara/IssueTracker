@@ -15,5 +15,6 @@ export class ProjectTask {
     public startDate = null;
     public endDate = null;
     public timeSpent = null;
+    public projectId: number = 0;
     
 }

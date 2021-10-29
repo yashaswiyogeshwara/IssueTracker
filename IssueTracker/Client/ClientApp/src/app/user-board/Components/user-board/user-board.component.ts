@@ -41,7 +41,6 @@ export class UserBoardComponent implements OnInit {
       p.endDate = data.endDate;
       p.estimate = data.estimate;
       p.startDate = data.startDate;
-      p.teamId = data.teamId;
       p.timeSpent = data.timeSpent;
       p.title = data.title;
       return p;

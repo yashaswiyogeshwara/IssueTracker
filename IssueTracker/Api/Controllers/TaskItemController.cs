@@ -36,7 +36,8 @@ namespace Api.Controllers
                     StartDate = taskItem.StartDate,
                     TeamId = taskItem.TeamId,
                     StatusId = taskItem.StatusId,
-                    DisplayOrder = taskItem.DisplayOrder
+                    DisplayOrder = taskItem.DisplayOrder,
+                    ProjectId = taskItem.ProjectId
                 });
             }
             else {
@@ -51,7 +52,8 @@ namespace Api.Controllers
                     task.StartDate = taskItem.StartDate;
                     task.TeamId = taskItem.TeamId;
                     task.StatusId = taskItem.StatusId;
-                task.DisplayOrder = taskItem.DisplayOrder;
+                    task.DisplayOrder = taskItem.DisplayOrder;
+                    task.ProjectId = taskItem.ProjectId;
             }  
                 
                 Context.SaveChanges();

@@ -6,15 +6,6 @@
         </mat-error>        
     </mat-form-field>
     <div>
-      <mat-form-field class="team">
-        <mat-label>Team</mat-label>
-        <mat-select formControlName="teamId" required>
-          <mat-option *ngFor="let team of teams" [value]="team.id">
-            {{team.name}}
-          </mat-option>
-        </mat-select>
-        <mat-error *ngIf="team?.invalid">Please choose an team</mat-error>
-      </mat-form-field>
       <mat-form-field class="start-end-date">
         <mat-label>Enter Start and End Dates for the Task</mat-label>
         <mat-date-range-input [rangePicker]="picker">
@@ -33,9 +24,6 @@
       </mat-form-field>
       <mat-form-field class="time-spent">
         <input matInput placeholder="Time Spent(hours)" type="number" formControlName="timeSpent">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Project" type="number" >
       </mat-form-field>
     </div>
      <mat-form-field>

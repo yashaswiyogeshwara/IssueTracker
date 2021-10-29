@@ -10,7 +10,6 @@ namespace Api.Models
     {
         public int? id { get; set; }
         public string Title { get; set; }
-        public long? TeamId { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public string Description { get; set; }

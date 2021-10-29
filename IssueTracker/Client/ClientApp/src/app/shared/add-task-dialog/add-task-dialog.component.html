@@ -57,6 +57,14 @@
 		<mat-form-field>
 			<input matInput placeholder="Time Spent(hours)" type="number" formControlName="timeSpent">
 		</mat-form-field>
+		<mat-form-field>
+			<mat-label>Team Member</mat-label>
+			<mat-select formControlName="projectId" required>
+				<mat-option *ngFor="let project of projects" [value]="project.id">
+					{{project.title}}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>
 	</div>
 
 

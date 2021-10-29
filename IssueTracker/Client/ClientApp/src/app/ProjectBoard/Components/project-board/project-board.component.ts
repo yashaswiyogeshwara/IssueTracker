@@ -86,6 +86,7 @@ export class ProjectBoardComponent implements OnInit {
             task.estimate = data.estimate;
             task.timeSpent = data.timeSpent;
             task.statusId = data.statusId;
+            task.projectId = data.projectId;
             task.displayOrder = projectTask.displayOrder > 0 ? projectTask.displayOrder : this.taskList.length;
             return task;
           }),

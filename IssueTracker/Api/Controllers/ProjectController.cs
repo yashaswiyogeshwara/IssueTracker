@@ -30,7 +30,6 @@ namespace Api.Controllers
                 StartDate = project.StartDate,
                 EndDate = project.EndDate,
                 Estimate = project.Estimate,
-                TeamId = project.TeamId,
                 TimeSpent = project.TimeSpent
             });
             Context.SaveChanges();
