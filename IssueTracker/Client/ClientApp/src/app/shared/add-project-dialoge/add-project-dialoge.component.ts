@@ -20,7 +20,6 @@ export class AddProjectDialogeComponent implements OnInit {
         "id":[],
         "title":['',[Validators.required]],
         "description":[],
-        "teamId":[],
         "startDate":[],
         "endDate":[],
         "estimate":[],
@@ -46,9 +45,6 @@ export class AddProjectDialogeComponent implements OnInit {
     return this.addProjectForm.get('description');
   }
 
-  get team(){
-    return this.addProjectForm.get('team');
-  }
 
   SaveProject(){
     this.dialogRef.close(this.addProjectForm.value);

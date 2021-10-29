@@ -13,6 +13,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProjectTask } from 'src/app/ProjectBoard/Services/responses/get-task-response';
+import { Project } from 'src/app/user-board/Services/Responses/get-project';
+import { UserBoardService } from 'src/app/user-board/Services/user-board.service';
 
 @Component({
   selector: 'app-add-task-dialog',
@@ -29,10 +31,16 @@ export class AddTaskDialogComponent implements OnInit {
     {"id" : 3, "name":"Done"  },
     {"id" : 4, "name":"Accepted"  }
   ]; 
+  public projects: Project[] = [] as Project[];
   constructor(public fb: FormBuilder,
      public dialogRef : MatDialogRef<AddTaskDialogComponent>, 
-    @Inject(MAT_DIALOG_DATA) public data: {taskInfo: ProjectTask}
+     public userService : UserBoardService,
+     @Inject(MAT_DIALOG_DATA) public data: {taskInfo: ProjectTask
+    }
     ) {
+      this.userService.GetProjects().valueChanges.subscribe((data) =>{
+        this.projects = data.data.projects;
+      });
     this.addTaskForm = fb.group({
       "id":[data.taskInfo.id],
       "title":[data.taskInfo.title,[Validators.required]],
@@ -43,6 +51,7 @@ export class AddTaskDialogComponent implements OnInit {
        "endDate":[data.taskInfo.endDate],
        "estimate":[data.taskInfo.estimate],
        "timeSpent":[data.taskInfo.timeSpent],
+       "projectId":[data.taskInfo.projectId],
        "parentTaskId":[''],
        "statusId":[data.taskInfo.statusId,[Validators.required]]
     });

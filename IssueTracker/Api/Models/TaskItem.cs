@@ -20,5 +20,6 @@ namespace Api.Models
         public long ParentTaskId { get; set; }
         public int StatusId { get; set; }
         public int DisplayOrder { get; set; }
+        public int? ProjectId { get; set; }
     }
 }

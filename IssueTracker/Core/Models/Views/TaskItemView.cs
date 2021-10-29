@@ -20,5 +20,6 @@ namespace Core.Models.Views
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; } 
         public int? TimeSpent { get; set; }
+        public int? ProjectId  { get; set; }
     }
 }

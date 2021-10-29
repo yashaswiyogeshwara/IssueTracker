@@ -10,4 +10,5 @@ export class Task{
   public timeSpent = null;
   public statusId:number = 0;
   public displayOrder: number = 0; 
+  public projectId: number =0;
 }

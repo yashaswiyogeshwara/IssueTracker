@@ -19,7 +19,8 @@ const GET_Project_Tasks = gql`
       estimate,
       startDate,
       endDate,
-      timeSpent
+      timeSpent,
+      projectId
     }
   }
 `;

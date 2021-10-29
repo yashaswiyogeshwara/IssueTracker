@@ -5,7 +5,6 @@ export class GetProjectsResponse  {
 export class Project{
     public id : number = 0;
     public title : string = '';
-    public teamId : number = 0;
     public startDate = null;
     public endDate = null;
     public description : string = '';
